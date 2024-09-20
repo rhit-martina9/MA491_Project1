@@ -94,7 +94,7 @@ def a_star(start, goal, grid):
             if score < costs[nextNode]:
                 path[nextNode] = curNode
                 costs[nextNode] = score
-                dists[nextNode] = score + man_dist(nextNode,goal)
+                dists[nextNode] = score + dist(nextNode,goal)
                 if nextNode not in to_visit:
                     to_visit.append(nextNode)
     return -1
@@ -103,10 +103,6 @@ def dist(p1: int, p2: int):
     node1 = get_node(p1)
     node2 = get_node(p2)
     return ns_dist*abs(node1[0] - node2[0]) + ew_dist*abs(node1[1] - node2[1])
-def man_dist(p1: int, p2: int):
-    node1 = get_node(p1)
-    node2 = get_node(p2)
-    return abs(node1[0] - node2[0]) + abs(node1[1] - node2[1])
 
 def get_corner_times(g):
     times = np.array([[[-1 for _ in range(dims[1])] for _ in range(dims[0])] for _ in range(dims[0]*dims[1])])
