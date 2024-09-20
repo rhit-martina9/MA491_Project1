@@ -14,10 +14,20 @@ M = AbstractModel()
 M.name = "FacilitiesProblem"
 
 # Sets
-
+M.Horiz = Set()
+M.Verti = Set()
+def CreateArcSet(M):
+    ArcSet = []
+    for(i,j) in M.Horiz * M.Verti:
+        ArcSet.append((i,j))
+    return ArcSet
+M.Arc = Set(within=M.Horiz*M.Verti, initialize=CreateArcSet)
+M.InvalidArcs = Set(within=M.Arc*M.Arc)
 
 # Parameters
-
+M.NSDist = Param(within=NonNegativeIntegers)
+M.EWDist = Param(within=NonNegativeIntegers)
+M.Demand = Param(M.Horiz, M.Verti, within=NonNegativeIntegers)
 
 # Variables
 

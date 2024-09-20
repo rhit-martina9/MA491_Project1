@@ -109,19 +109,12 @@ def get_corner_times(g):
     for i in range(len(times)):
         for j in range(dims[0]):
             for k in range(dims[1]):
-                # print(i,j,k)
                 times[i][j][k] = a_star(i,get_index(j,k),g)
                 # times[i][j][k] = dist(i,get_index(j,k))
-                # print("\t",times[i][j][k])
-    changes = 0
     for i in range(len(times)):
         for j in range(dims[0]):
             for k in range(dims[1]):
-                temp = times[i][j][k]
                 times[i][j][k] = min(times[i][j][k],times[get_index(j,k)][get_node(i)[0]][get_node(i)[1]])
-                if temp != times[i][j][k]:
-                    changes += 1
-    print(changes)
     return times
 
 def get_grid_times(corner_times):
