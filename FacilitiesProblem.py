@@ -15,9 +15,12 @@ M.name = "FacilitiesProblem"
 
 # Sets
 
+
 # Parameters
 
+
 # Variables
+
 
 # Objective
 def CalcTotalDistance(M):
@@ -25,6 +28,7 @@ def CalcTotalDistance(M):
 M.TotalDistance = Objective(rule=CalcTotalDistance, sense=minimize)
 
 # Constraints
+
 
 # Create a problem instance
 instance = M.create_instance("FacilitiesProblem.dat")
