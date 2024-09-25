@@ -146,12 +146,10 @@ corner_times = get_corner_times(g)
 grid_times = get_grid_times(corner_times)
 best_time, best_pair = find_best(grid_times)
 
-grid = np.minimum(grid_times[best_pair[0]],grid_times[best_pair[1]])
-time = np.sum(np.multiply(grid,time_map))
-
 draw_grid(g, best_pair)
 print()
-print(get_node(best_pair[0]),get_node(best_pair[1]), time, np.sum(time_map), time/np.sum(time_map))
-print(grid,end="\n\n")
 
-
+print("Best Facility Locations are at", get_node(best_pair[0]), "and", get_node(best_pair[1]))
+print("Average Response Time:",best_time/np.sum(time_map))
+print("\nResponse Time Table:")
+# print(grid,end="\n\n")
